@@ -16,6 +16,10 @@
       {
         "command": "tidy-code.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "tidy-code.formatCode",
+        "title": "Tidy Code | Format Code"
       }
     ]
   },
