@@ -17,12 +17,12 @@ export async function activate(context: ExtensionContext) {
 	formatCode();
 
 	const formatCodeCommand = commands.registerCommand('tidy-code.formatCode', formatCode);
-	const formatOnSaveEvent = workspace.onDidSaveTextDocument(formatCode as any);
+	const formatOnWillSaveEvent = workspace.onWillSaveTextDocument(formatCode as any);
 	const formatOnDidOpenTextDocument = workspace.onDidOpenTextDocument(formatCode as any);
 
 	context.subscriptions.push(formatCodeCommand);
 	context.subscriptions.push(formatOnDidOpenTextDocument);
-	context.subscriptions.push(formatOnSaveEvent);
+	context.subscriptions.push(formatOnWillSaveEvent);
 }
 
 export function deactivate() {}

@@ -1,6 +1,9 @@
 import * as vscode from 'vscode';
 import defaultPreferences from './defaultPreferences';
 
+type TextEditor = vscode.TextEditor;
+type TextEditorEdit = vscode.TextEditorEdit;
+
 const { 
     formatOnOpen 
 } = defaultPreferences;
@@ -14,16 +17,14 @@ export async function formatCode() {
         (isFirstRun && formatOnOpen) || 
         !isFirstRun
     ) {
-        type TextEditor = vscode.TextEditor;
+        const activeTextEditor: TextEditor | undefined = vscode.window.activeTextEditor;
 
-        
+        if (activeTextEditor) {
+            const activeText: string = activeTextEditor.document.getText();
 
-        vscode.window.showInformationMessage('buckle up buckaroos');
-        const fileName: TextEditor | undefined = vscode.window.activeTextEditor;
-        let fsPath: Path | undefined = vscode?.window?.activeTextEditor?.document?.uri.fsPath;
+            
 
-        if (!fsPath) {
-            fsPath = '';
+            vscode.window.showInformationMessage('buckle up buckaroos');
         }
     }
 
