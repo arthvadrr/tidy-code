@@ -17,8 +17,8 @@ export async function activate(context: ExtensionContext) {
 	formatCode();
 
 	const formatCodeCommand = commands.registerCommand('tidy-code.formatCode', formatCode);
-	const formatOnWillSaveEvent = workspace.onWillSaveTextDocument(formatCode as any);
-	const formatOnDidOpenTextDocument = workspace.onDidOpenTextDocument(formatCode as any);
+	const formatOnWillSaveEvent = workspace.onWillSaveTextDocument(formatCode);
+	const formatOnDidOpenTextDocument = workspace.onDidOpenTextDocument(formatCode);
 
 	context.subscriptions.push(formatCodeCommand);
 	context.subscriptions.push(formatOnDidOpenTextDocument);
