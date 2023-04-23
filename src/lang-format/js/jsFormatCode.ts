@@ -1,4 +1,4 @@
-export function jsFormatFromString(fileContents: string): string {
+export function jsFormatCode(fileContents: string): string {
     let failed       = false;
     let currentDepth = 0; 
 

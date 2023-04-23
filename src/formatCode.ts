@@ -4,8 +4,8 @@ import defaultPreferences from './defaultPreferences';
 type TextEditor = vscode.TextEditor;
 type TextEditorEdit = vscode.TextEditorEdit;
 
-const { 
-    formatOnOpen 
+const {
+    formatOnOpen
 } = defaultPreferences;
 
 let isFirstRun = true;
@@ -14,7 +14,7 @@ export async function formatCode() {
     type Path = string;
 
     if (
-        (isFirstRun && formatOnOpen) || 
+        (isFirstRun && formatOnOpen) ||
         !isFirstRun
     ) {
         const activeTextEditor: TextEditor | undefined = vscode.window.activeTextEditor;
@@ -25,20 +25,15 @@ export async function formatCode() {
             const activeDocument: TextDocument = activeTextEditor.document;
             const activeText: string = activeTextEditor.document.getText();
             const edit = new vscode.WorkspaceEdit();
+            const languageId = activeDocument.languageId;
 
-            console.log(activeDocument.uri);
-
-            const formattedText = activeText + 'HELLO';
+            const formattedText = activeText + 'HELLO1';
 
             edit.replace(
                 activeDocument.uri,
                 new vscode.Range(0, 0, activeDocument.lineCount, 0),
                 formattedText
             );
-
-            console.log(edit);
-
-            vscode.workspace.applyEdit(edit);
 
             vscode.window.showInformationMessage('buckle up buckaroos');
         }
